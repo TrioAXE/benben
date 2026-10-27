@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pizza Press – Admin</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div id="loginView" class="login">
+  <h2>🍕 Admin Login</h2>
+  <input type="password" id="pw" placeholder="Admin password" onkeydown="if(event.key==='Enter')login()">
+  <button onclick="login()">Log in</button>
+  <div class="err" id="err"></div>
+</div>
+
+<div id="dash" style="display:none">
+  <nav>
+    <strong>🍕 The Pizza Press</strong>
+    <div class="navtabs">
+      <button class="navtab active" id="tabOrders" onclick="showView('orders')">Orders</button>
+      <button class="navtab" id="tabMenu" onclick="showView('menu')">Menu</button>
+    </div>
+    <div><span id="live" style="margin-right:12px;font-size:.8rem">● live</span><button onclick="logout()">Logout</button></div>
+  </nav>
+
+  <div class="wrap" id="ordersView">
+    <div class="stats">
+      <div class="stat"><b id="sNew">0</b>New orders</div>
+      <div class="stat"><b id="sActive">0</b>In progress</div>
+      <div class="stat"><b id="sToday">0</b>Orders today</div>
+      <div class="stat"><b id="sSales">₱0</b>Sales today</div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="orders" id="orders"></div>
+  </div>
+
+  <div class="wrap" id="menuView" style="display:none">
+    <div class="menubar">
+      <h2>Menu items</h2>
+      <button class="addbtn" onclick="openItem()">+ Add item</button>
+    </div>
+    <div id="menuList"></div>
+  </div>
+</div>
+
+<div class="mmodal" id="itemModal">
+  <div class="mbox">
+    <h3 id="itemTitle">Add item</h3>
+    <label>Name<input type="text" id="fName" maxlength="80"></label>
+    <label>Category<input type="text" id="fCat" list="catList" maxlength="60" placeholder="Pick or type a new one"></label>
+    <datalist id="catList"></datalist>
+    <label>Description<input type="text" id="fDesc" maxlength="255"></label>
+    <label>Price (₱)<input type="number" id="fPrice" min="0" step="1"></label>
+    <div class="checks">
+      <label><input type="checkbox" id="fV"> Vegetarian (V)</label>
+      <label><input type="checkbox" id="fGF"> Gluten-free (GF)</label>
+      <label><input type="checkbox" id="fAvail" checked> Available</label>
+    </div>
+    <div class="err" id="fErr"></div>
+    <div class="mactions">
+      <button class="mcancel" onclick="closeItem()">Cancel</button>
+      <button class="msave" onclick="saveItem()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

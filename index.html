@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pizza Press – Order Online</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<nav>
+  <h2>🍕 The Pizza Press</h2>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="toggleCart(true)">Cart (<span id="count">0</span>)</button>
+    <div class="user-pic" onclick="toggleMenu()">U</div>
+  </div>
+  <div class="sub-menu-wrap" id="subMenu">
+    <div class="sub-menu">
+      <strong>Settings</strong>
+      <a href="#" onclick="showOrders();return false">My Orders <span>&gt;</span></a>
+      <a href="#">Settings &amp; Privacy <span>&gt;</span></a>
+      <a href="#">Help &amp; Support <span>&gt;</span></a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="title"><h1>Today's Menu</h1><hr><p>Pick your favorites and place your order</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+<aside class="cart" id="cart">
+  <header><h3>Your Order</h3><button onclick="toggleCart(false)">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="checkout">
+    <input id="name" placeholder="Your name">
+    <select id="type">
+      <option value="Dine-in">Dine-in</option>
+      <option value="Pick-up">Pick-up</option>
+    </select>
+    <input id="table" placeholder="Table number / contact number">
+    <div class="total"><span>Total</span><span id="total">₱0</span></div>
+    <button class="place" id="place" onclick="placeOrder()" disabled>Place Order</button>
+  </div>
+</aside>
+
+<div class="modal" id="modal"><div id="modalBody"></div></div>
+
+<script src="main.js"></script>
+</body>
+</html>
